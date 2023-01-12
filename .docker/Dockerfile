@@ -1,4 +1,4 @@
-ARG ROS_DISTRO=humble
+ARG ROS_DISTRO=rolling
 FROM ros:${ROS_DISTRO}-ros-base
 MAINTAINER Peter David Fagan "peterdavidfagan@gmail.com"
 
@@ -15,10 +15,12 @@ RUN vcs import --skip-existing src < src/moveit2/moveit2.repos && \
 
 # install ros dependencies
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
-    apt-get -q update && \
+    apt-get update && \
+    apt-get install -y ros-${ROS_DISTRO}-rmw-cyclonedds-cpp && \
     rosdep update && \
     DEBIAN_FRONTEND=noninteractive \
-    rosdep install --from-paths src --ignore-src -r -y --rosdistro ${ROS_DISTRO}
+    rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y && \
+    colcon build --mixin debug
 
 # build the workspace
-RUN colcon build --mixin debug
+#RUN sudo chmod 777 -R . && colcon build --mixin debug
