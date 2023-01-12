@@ -1,0 +1,9 @@
+[submodule "src/xarm_ros2"]
+	path = src/xarm_ros2
+	url = git@github.com:xArm-Developer/xarm_ros2.git
+[submodule "src/moveit2"]
+	path = src/moveit2
+	url = git@github.com:peterdavidfagan/moveit2.git
+[submodule "src/moveit2_tutorials"]
+	path = src/moveit2_tutorials
+	url = git@github.com:peterdavidfagan/moveit2_tutorials.git
