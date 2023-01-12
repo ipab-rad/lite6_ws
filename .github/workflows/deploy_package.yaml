@@ -1,4 +1,4 @@
-name: Create and publish panda workspace Docker image
+name: Create and publish ufactory lite6 workspace Docker image
 
 on:
   push:
