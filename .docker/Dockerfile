@@ -1,4 +1,4 @@
-ARG ROS_DISTRO=rolling
+ARG ROS_DISTRO=humble
 FROM ros:${ROS_DISTRO}-ros-base
 MAINTAINER Peter David Fagan "peterdavidfagan@gmail.com"
 
@@ -6,7 +6,7 @@ MAINTAINER Peter David Fagan "peterdavidfagan@gmail.com"
 ENV RMW_IMPLEMENTATION rmw_cyclonedds_cpp
 
 # set up workspace
-WORKDIR /root/panda_ws
+WORKDIR /root/ufactor_lite6_ws
 COPY . .
 
 # import dependent libraries
@@ -22,5 +22,3 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
     rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y && \
     colcon build --mixin debug
 
-# build the workspace
-#RUN sudo chmod 777 -R . && colcon build --mixin debug
