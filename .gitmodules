@@ -1,8 +1,12 @@
-[submodule "src/xarm_ros2"]
-	path = src/xarm_ros2
+[submodule "src/perception/realsense-ros"]
+	path = src/perception/realsense-ros
+	url = git@github.com:IntelRealSense/realsense-ros.git
+	branch = ros2-development
+[submodule "src/control/xarm_ros2"]
+	path = src/control/xarm_ros2
 	url = git@github.com:xArm-Developer/xarm_ros2.git
 	branch = humble
-[submodule "src/moveit2_tutorials"]
-	path = src/moveit2_tutorials
+[submodule "src/motion_planning/moveit2_tutorials"]
+	path = src/motion_planning/moveit2_tutorials
 	url = git@github.com:ros-planning/moveit2_tutorials.git
 	branch = humble

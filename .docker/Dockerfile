@@ -10,6 +10,14 @@ ENV ROS_UNDERLAY /root/lite6_ws/install
 WORKDIR $ROS_UNDERLAY/..
 COPY . .
 
+# install realsense binaries
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    rm -rf /var/lib/apt/lists/* && \ 
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE && \
+    add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u && \
+    apt-get install -y librealsense2-dkms librealsense2-utils
+
 # install ros dependencies
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
     apt-get update && \
@@ -18,7 +26,7 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
     wget && \
     wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add - && \
     apt-get update && \
-    vcs import --skip-existing src < src/moveit2_tutorials/moveit2_tutorials.repos && \ 
+    vcs import --skip-existing src < src/motion_planning/moveit2_tutorials/moveit2_tutorials.repos && \ 
     rosdep update && \
     DEBIAN_FRONTEND=noninteractive \
     rosdep install --from-paths src --ignore-src -r -y --rosdistro ${ROS_DISTRO} && \
