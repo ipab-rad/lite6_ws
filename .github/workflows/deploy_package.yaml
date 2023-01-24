@@ -2,12 +2,12 @@ name: Create and publish ufactory lite6 workspace Docker image
 
 on:
   push:
-    branches: ['peter/moveit_py']
+    branches: ['humble']
 
 env:
   REGISTRY: ghcr.io
   ORG_NAME: ipab-rad
-  IMAGE_NAME: lite6_ws_test
+  IMAGE_NAME: lite6_ws_humble
 
 jobs:
   build-and-push-image:
@@ -41,4 +41,4 @@ jobs:
           context: .
           file: .docker/Dockerfile
           push: true
-          tags: ghcr.io/ipab-rad/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME}}/${{ env.IMAGE_NAME }}:latest
