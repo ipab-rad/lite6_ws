@@ -1,0 +1,23 @@
+version: "3"
+
+services: 
+  moveit:
+    image: ghcr.io/ipab-rad/ufactory_lite6:perception
+    build: 
+      context: ../
+      dockerfile: .docker/perception_image
+    environment:
+      - DISPLAY=${DISPLAY}
+      - XAUTHORITY=${DOCKER_XAUTH}
+    volumes:
+      - /tmp/.X11-unix:/tml/.X11-unix
+      - ${DOCKER_XAUTH}:${DOCKER_XAUTH}
+    network_mode: "host"
+    cap_add:
+      - SYS_NICE
+    ulimits:
+      rtprio: 70
+      rttime: -1 # corresponds to 'unlimited'
+      memlock: 8428281856
+    command: ros2 launch xarm_moveit_config lite6_moveit_realmove.launch.py robot_ip:=192.168.1.156 [add_gripper:=true]
+
