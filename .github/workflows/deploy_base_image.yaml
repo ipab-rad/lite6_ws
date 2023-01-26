@@ -39,6 +39,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: .docker/Dockerfile
+          file: .docker/base_image
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME}}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME}}/${{ env.IMAGE_NAME }}:base

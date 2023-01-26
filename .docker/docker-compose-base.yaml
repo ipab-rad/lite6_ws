@@ -2,10 +2,10 @@ version: "3"
 
 services: 
   moveit:
-    image: ghcr.io/ipab-rad/ufactory_lite6:latest
+    image: ghcr.io/ipab-rad/ufactory_lite6:base
     build: 
       context: ../
-      dockerfile: .docker/Dockerfile
+      dockerfile: .docker/base_image
     environment:
       - DISPLAY=${DISPLAY}
       - XAUTHORITY=${DOCKER_XAUTH}
