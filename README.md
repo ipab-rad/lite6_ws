@@ -33,3 +33,6 @@ To run the application one must run with the correct IP address for the panda ro
 ```
 docker-compose -f <docker-compose-file> up
 ```
+
+# Realsense System Dependencies
+https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md
