@@ -10,8 +10,8 @@ ENV ROS_UNDERLAY /root/lite6_ws/install
 WORKDIR $ROS_UNDERLAY/..
 
 # the base image only includes control
-COPY ./src/control/. .
-COPY ./src/motion_planning/. .
+COPY src/control ./src/control
+COPY src/motion_planning ./src/motion_planning
 
 # install ros dependencies
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
