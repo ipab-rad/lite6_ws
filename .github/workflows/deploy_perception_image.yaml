@@ -45,6 +45,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: .docker/base_image
+          file: .docker/perception_image
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME}}/${{ env.IMAGE_NAME }}:perception
