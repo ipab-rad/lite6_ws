@@ -1,4 +1,4 @@
-name: Deploy Base Image
+name: Deploy Perception Image
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
     paths:
       - src/**
       - .gitmodules
-      - .github/workflows/deploy_base_image.yaml
-      - .docker/base_image
+      - .github/workflows/deploy_perception_image.yaml
+      - .docker/perception_image
 
 env:
   REGISTRY: ghcr.io
@@ -47,4 +47,4 @@ jobs:
           context: .
           file: .docker/base_image
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME}}/${{ env.IMAGE_NAME }}:base
+          tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME}}/${{ env.IMAGE_NAME }}:perception
