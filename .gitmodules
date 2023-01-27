@@ -13,3 +13,6 @@
 [submodule "src/perception/zed-ros2-wrapper"]
 	path = src/perception/zed-ros2-wrapper
 	url = git@github.com:stereolabs/zed-ros2-wrapper.git
+[submodule "src/demos/lite6_moveit_demos"]
+	path = src/demos/lite6_moveit_demos
+	url = git@github.com:ipab-rad/lite6_moveit_demos.git
