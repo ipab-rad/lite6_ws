@@ -78,16 +78,15 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
     rosdep update && \
     DEBIAN_FRONTEND=noninteractive \
     rosdep install --from-paths src --ignore-src -r -y --rosdistro ${ROS_DISTRO} --skip-keys=librealsense2 && \
-    colcon build --mixin release && \ 
-    #colcon build --parallel-workers $(nproc) --symlink-install \
-    #--event-handlers console_direct+ --base-paths src \
-    #--cmake-args ' -DCMAKE_BUILD_TYPE=Release' \
-    #' -DCMAKE_LIBRARY_PATH=/usr/local/cuda-11/lib64' \
-    #' -DCMAKE_CXX_FLAGS="-Wl,--allow-shlib-undefined"' \
-    #' --no-warn-unused-cli' && \ 
+    colcon build --parallel-workers $(nproc) --symlink-install \
+    --event-handlers console_direct+ --base-paths src \
+    --cmake-args ' -DCMAKE_BUILD_TYPE=Release' \
+    ' -DCMAKE_LIBRARY_PATH=/usr/local/cuda-11/lib64' \
+    ' -DCMAKE_CXX_FLAGS="-Wl,--allow-shlib-undefined"' \
+    ' --no-warn-unused-cli' && \ 
     rm -rf /var/lib/apt/lists/* 
-    # Setup environment variables
+
+# Setup environment variables
 COPY ros_entrypoint.sh /sbin/ros_entrypoint.sh
 RUN sudo chmod 755 /sbin/ros_entrypoint.sh
 ENTRYPOINT ["/sbin/ros_entrypoint.sh"]
-    #sed -i "s#/opt/ros/\$ROS_DISTRO/setup.bash#$ROS_UNDERLAY/setup.bash#g" /ros_entrypoint.sh
