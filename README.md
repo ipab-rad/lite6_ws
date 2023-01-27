@@ -36,3 +36,6 @@ docker-compose -f <docker-compose-file> up
 
 # Realsense System Dependencies
 https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md
+
+# Zedd System Dependencies
+Placeholder
