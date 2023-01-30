@@ -38,4 +38,4 @@ docker-compose -f <docker-compose-file> up
 https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md
 
 # Zedd System Dependencies
-Placeholder
+https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
