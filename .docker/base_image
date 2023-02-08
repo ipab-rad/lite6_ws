@@ -21,7 +21,7 @@ RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
     wget && \
     wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add - && \
     apt-get update && \
-    vcs import --skip-existing src < src/motion_planning/moveit2_tutorials/moveit2_tutorials.repos && \ 
+    vcs import --skip-existing src/motion_planning < src/motion_planning/moveit2_tutorials/moveit2_tutorials.repos && \ 
     rosdep update && \
     DEBIAN_FRONTEND=noninteractive \
     rosdep install --from-paths src --ignore-src -r -y --rosdistro ${ROS_DISTRO} && \
