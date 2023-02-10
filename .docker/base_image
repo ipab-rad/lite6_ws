@@ -12,6 +12,7 @@ WORKDIR $ROS_UNDERLAY/..
 # the base image only includes control
 COPY src/control ./src/control
 COPY src/motion_planning ./src/motion_planning
+COPY src/demos ./src/demos
 
 # install ros dependencies
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
