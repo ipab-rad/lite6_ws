@@ -6,10 +6,6 @@
 	path = src/control/xarm_ros2
 	url = git@github.com:peterdavidfagan/xarm_ros2.git
 	branch = humble
-[submodule "src/motion_planning/moveit2_tutorials"]
-	path = src/motion_planning/moveit2_tutorials
-	url = git@github.com:ros-planning/moveit2_tutorials.git
-	branch = humble
 [submodule "src/perception/zed-ros2-wrapper"]
 	path = src/perception/zed-ros2-wrapper
 	url = git@github.com:stereolabs/zed-ros2-wrapper.git
@@ -19,3 +15,7 @@
 [submodule "src/motion_planning/lite6_moveit_resources"]
 	path = src/motion_planning/lite6_moveit_resources
 	url = git@github.com:peterdavidfagan/lite6_moveit_resources.git
+[submodule "src/motion_planning/moveit2"]
+	path = src/motion_planning/moveit2
+	url = git@github.com:peterdavidfagan/moveit2.git
+	branch = moveit_py
