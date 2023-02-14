@@ -9,10 +9,14 @@ services:
     environment:
       - DISPLAY=${DISPLAY}
       - XAUTHORITY=${DOCKER_XAUTH}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=graphics
     volumes:
-      - /tmp/.X11-unix:/tml/.X11-unix
+      - /tmp/.X11-unix:/tmp/.X11-unix
       - ${DOCKER_XAUTH}:${DOCKER_XAUTH}
     network_mode: "host"
+    privileged: true
+    runtime: nvidia
     cap_add:
       - SYS_NICE
     ulimits:

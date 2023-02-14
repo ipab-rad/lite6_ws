@@ -9,6 +9,7 @@ services:
     environment:
       - DISPLAY=${DISPLAY}
       - XAUTHORITY=${DOCKER_XAUTH}
+      - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - /tmp/.X11-unix:/tml/.X11-unix
       - ${DOCKER_XAUTH}:${DOCKER_XAUTH}
