@@ -22,3 +22,7 @@
 [submodule "src/motion_planning/moveit2_tutorials"]
 	path = src/motion_planning/moveit2_tutorials
 	url = git@github.com:peterdavidfagan/moveit2_tutorials.git
+	branch = moveit_py_notebook_tutorial
+[submodule "src/audio/audio_common"]
+	path = src/audio/audio_common
+	url = git@github.com:ros-drivers/audio_common.git
