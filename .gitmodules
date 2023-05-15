@@ -18,7 +18,7 @@
 [submodule "src/motion_planning/moveit2"]
 	path = src/motion_planning/moveit2
 	url = git@github.com:peterdavidfagan/moveit2.git
-	branch = moveit_py
+	branch = main
 [submodule "src/motion_planning/moveit2_tutorials"]
 	path = src/motion_planning/moveit2_tutorials
 	url = git@github.com:peterdavidfagan/moveit2_tutorials.git
