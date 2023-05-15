@@ -26,3 +26,6 @@
 [submodule "src/audio/audio_common"]
 	path = src/audio/audio_common
 	url = git@github.com:ros-drivers/audio_common.git
+[submodule "src/control/gripper_action_client"]
+	path = src/control/gripper_action_client
+	url = git@github.com:peterdavidfagan/gripper_action_client.git
