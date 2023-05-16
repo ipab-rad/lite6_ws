@@ -1,0 +1,19 @@
+version: "3"
+
+services: 
+  moveit:
+    image: ghcr.io/ipab-rad/lite6_ws:teleoperation
+    build: 
+      context: ../../
+      dockerfile: .docker/teleoperation/Dockerfile.teleoperation
+    environment:
+      - DISPLAY=${DISPLAY}
+      - XAUTHORITY=${DOCKER_XAUTH}
+    volumes:
+      - /tmp/.X11-unix:/tml/.X11-unix:rw
+      - ${DOCKER_XAUTH}:${DOCKER_XAUTH}
+    devices:
+      - "/dev:/dev"
+    privileged: true
+    network_mode: "host"
+    command: ros2 launch lite6_moveit_demos ps4.launch.py
