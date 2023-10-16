@@ -14,3 +14,6 @@
 [submodule "src/control/gripper_action_client"]
 	path = src/control/gripper_action_client
 	url = git@github.com:peterdavidfagan/gripper_action_client.git
+[submodule "src/control/xarm_ros2"]
+	path = src/control/xarm_ros2
+	url = git@github.com:xArm-Developer/xarm_ros2.git
