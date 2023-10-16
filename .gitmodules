@@ -1,14 +1,7 @@
-[submodule "src/perception/realsense-ros"]
-	path = src/perception/realsense-ros
-	url = git@github.com:IntelRealSense/realsense-ros.git
-	branch = ros2-development
 [submodule "src/control/xarm_ros2"]
 	path = src/control/xarm_ros2
 	url = git@github.com:peterdavidfagan/xarm_ros2.git
 	branch = humble
-[submodule "src/perception/zed-ros2-wrapper"]
-	path = src/perception/zed-ros2-wrapper
-	url = git@github.com:stereolabs/zed-ros2-wrapper.git
 [submodule "src/demos/lite6_moveit_demos"]
 	path = src/demos/lite6_moveit_demos
 	url = git@github.com:peterdavidfagan/lite6_moveit_demos.git
@@ -19,10 +12,6 @@
 	path = src/motion_planning/moveit2
 	url = git@github.com:peterdavidfagan/moveit2.git
 	branch = main
-[submodule "src/motion_planning/moveit2_tutorials"]
-	path = src/motion_planning/moveit2_tutorials
-	url = git@github.com:peterdavidfagan/moveit2_tutorials.git
-	branch = moveit_py_notebook_tutorial
 [submodule "src/audio/audio_common"]
 	path = src/audio/audio_common
 	url = git@github.com:ros-drivers/audio_common.git
