@@ -1,0 +1,19 @@
+version: "3"
+
+services: 
+  moveit:
+    image: ghcr.io/ipab-rad/lite6_ws:control
+    build: 
+      context: ../../
+      dockerfile: .docker/control/Dockerfile.control
+    devices:
+      - "/dev:/dev"
+    privileged: true
+    network_mode: "host"
+    cap_add:
+      - SYS_NICE
+    ulimits:
+      rtprio: 70
+      rttime: -1 # corresponds to 'unlimited'
+      memlock: 8428281856
+    command: echo "Placeholder"
