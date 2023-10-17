@@ -1,19 +1,19 @@
-name: Deploy Base Image
+name: lite6_control
 
 on:
   push:
-    branches: 
-      - 'humble'
+    branches: ['rolling']
     paths:
-      - src/**
       - .gitmodules
-      - .github/workflows/deploy_base_image.yaml
-      - .docker/base_image
+      - src/control
+      - .docker/control/Dockerfile.control
+      - .github/workflows/control.yaml
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
   ORG_NAME: ipab-rad
-  IMAGE_NAME: lite6_ws_humble
+  IMAGE_NAME: lite6_control
 
 jobs:
   build-and-push-image:
@@ -46,6 +46,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: .docker/base_image
+          file: .docker/control/Dockerfile.control
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME}}/${{ env.IMAGE_NAME }}:base
+          no-cache: true
+          tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:latest

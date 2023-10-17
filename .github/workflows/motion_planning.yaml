@@ -1,19 +1,19 @@
-name: Deploy Perception Image
+name: lite6_motion_planning
 
 on:
   push:
-    branches: 
-      - 'humble'
+    branches: ['rolling']
     paths:
-      - src/**
       - .gitmodules
-      - .github/workflows/deploy_perception_image.yaml
-      - .docker/perception_image
+      - src/*
+      - .docker/motion_planning/Dockerfile.motion_planning
+      - .github/workflows/motion_planning.yaml
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
   ORG_NAME: ipab-rad
-  IMAGE_NAME: lite6_ws_humble
+  IMAGE_NAME: lite6_motion_planning
 
 jobs:
   build-and-push-image:
@@ -46,6 +46,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: .docker/perception_image
+          file: .docker/motion_planning/Dockerfile.motion_planning
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME}}/${{ env.IMAGE_NAME }}:perception
+          no-cache: true
+          tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:control
