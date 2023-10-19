@@ -37,3 +37,22 @@ xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $DOCKER_XAUTH nmerge -
 ```
 
 ## Running Tutorials
+
+### Motion Planning Tutorial
+```bash
+ros2 launch 
+```
+Please see [motion_planning_tutorial](placeholder.com) for further instructions.
+
+
+### Control Tutorial
+```bash
+ros2 launch 
+```
+Please see [control_tutorial](placeholder.com) for further instructions.
+
+### Policy Deployment Tutorial
+```bash
+ros2 launch 
+```
+Please see [policy_deployment_tutorial](placeholder.com) for further instructions.
