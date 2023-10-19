@@ -16,7 +16,7 @@ In order to install and build all workspace dependencies on your local machine a
 ./local_setup.sh
 ```
 
-# Docker Instructions
+# Docker GUI Prerequisites
 If you wish to run a container as a GUI application you need to first manage X-server authentication. The most basic way to do so is through enabling access to all local applications by running: 
 
 ```
@@ -31,14 +31,4 @@ touch $DOCKER_XAUTH
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $DOCKER_XAUTH nmerge -
 ```
 
-In order to build the container one must then run: 
-
-```
-docker-compose -f <docker-compose-file> build
-```
-
-To run the application one must run with the correct IP address for the panda robot:
-
-```
-docker-compose -f <docker-compose-file> up
-```
+# Running Applications
