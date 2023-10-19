@@ -17,4 +17,4 @@
 [submodule "src/control/xarm_ros2"]
 	path = src/control/xarm_ros2
 	url = git@github.com:xArm-Developer/xarm_ros2.git
-	branch = humble
+	branch = rolling
