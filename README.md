@@ -16,7 +16,7 @@ In order to install and build all workspace dependencies on your local machine a
 ./local_setup.sh
 ```
 
-# Instructions
+# Docker Instructions
 If you wish to run a container as a GUI application you need to first manage X-server authentication. The most basic way to do so is through enabling access to all local applications by running: 
 
 ```
