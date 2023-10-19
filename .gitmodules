@@ -1,6 +1,3 @@
-[submodule "src/demos/lite6_moveit_demos"]
-	path = src/demos/lite6_moveit_demos
-	url = git@github.com:peterdavidfagan/lite6_moveit_demos.git
 [submodule "src/motion_planning/lite6_moveit_resources"]
 	path = src/motion_planning/lite6_moveit_resources
 	url = git@github.com:peterdavidfagan/lite6_moveit_resources.git
