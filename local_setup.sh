@@ -5,7 +5,7 @@ git submodule sync
 git submodule update --remote --init --recursive
 
 # install moveit dependencies
-cd ./src/motion_planning/moveit2
+cd ./src/motion_planning
 for repo in moveit2/moveit2.repos $(f="moveit2/moveit2_$ROS_DISTRO.repos"; test -r $f && echo $f); do vcs import < "$repo"; done
 
 # install rosdep dependencies
@@ -13,4 +13,5 @@ cd ../../
 rosdep install --from-paths . --ignore-src --rosdistro rolling -r -y
 
 # build the workspace
+source /opt/ros/rolling/setup.bash
 colcon build --mixin release
