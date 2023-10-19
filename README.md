@@ -3,7 +3,9 @@
 A default workspace configuration for the ufactory lite6 robot.
 <img src="./assets/workspace.jpg" width="400" />
 
-# Prerequisites
+# Hardware Setup
+
+# Software Prerequisites
 This workspaces requires the following software to be installed:
 
 * An installation of Docker ([instructions](https://docs.docker.com/engine/install/ubuntu/))
