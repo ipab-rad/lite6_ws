@@ -1,12 +1,7 @@
+[![lite6_control](https://github.com/ipab-rad/lite6_ws/actions/workflows/control.yaml/badge.svg)](https://github.com/ipab-rad/lite_6/blob/rolling/.github/workflows/control.yaml) [![motion_planning](https://github.com/ipab-rad/lite6_ws/actions/workflows/motion_planning.yaml/badge.svg)](https://github.com/ipab-rad/lite_6/blob/rolling/.github/workflows/motion_planning.yaml)
 # ufactory_lite6_ws
 A default workspace configuration for the ufactory lite6 robot.
 <img src="./assets/workspace.jpg" width="400" />
-
-# Actions Monitor 🔎
-| **Workflow Name**            | **Description**                                        | **Status**                                                                                                                                                                                                                                                                      |
-|------------------------------|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| control    | Publishes a built controller image for lite6 ROS2 workspace.       | [![lite6_control](https://github.com/ipab-rad/lite6_ws/actions/workflows/control.yaml/badge.svg)](https://github.com/ipab-rad/lite_6/blob/rolling/.github/workflows/control.yaml)          |
-| motion_planning    | Publishes a built motion_planning image for lite6 ROS2 workspace.       | [![motion_planning](https://github.com/ipab-rad/lite6_ws/actions/workflows/motion_planning.yaml/badge.svg)](https://github.com/ipab-rad/lite_6/blob/rolling/.github/workflows/motion_planning.yaml)          |
 
 # Instructions
 If you wish to run a container as a GUI application you need to first manage X-server authentication. The most basic way to do so is through enabling access to all local applications by running: 
