@@ -4,6 +4,7 @@ A default workspace configuration for the ufactory lite6 robot.
 <img src="./assets/workspace.jpg" width="400" />
 
 # Hardware Setup
+<img src="./assets/ufactory.png" width="400" />
 
 # Software Setup
 
