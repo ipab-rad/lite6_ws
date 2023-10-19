@@ -3,6 +3,12 @@
 A default workspace configuration for the ufactory lite6 robot.
 <img src="./assets/workspace.jpg" width="400" />
 
+# Prerequisites
+This workspaces requires the following software to be installed:
+
+* An installation of Docker ([instructions](https://docs.docker.com/engine/install/ubuntu/))
+* An installation of ROS rolling ([instructions](https://docs.ros.org/en/rolling/Installation.html))
+
 # Instructions
 If you wish to run a container as a GUI application you need to first manage X-server authentication. The most basic way to do so is through enabling access to all local applications by running: 
 
