@@ -1,4 +1,4 @@
-[![lite6_control](https://github.com/ipab-rad/lite6_ws/actions/workflows/control.yaml/badge.svg)](https://github.com/ipab-rad/lite_6/blob/rolling/.github/workflows/control.yaml) [![motion_planning](https://github.com/ipab-rad/lite6_ws/actions/workflows/motion_planning.yaml/badge.svg)](https://github.com/ipab-rad/lite_6/blob/rolling/.github/workflows/motion_planning.yaml)
+[![lite6_control](https://github.com/ipab-rad/lite6_ws/actions/workflows/control.yaml/badge.svg)](https://github.com/ipab-rad/lite6_ws/blob/rolling/.github/workflows/control.yaml) [![motion_planning](https://github.com/ipab-rad/lite6_ws/actions/workflows/motion_planning.yaml/badge.svg)](https://github.com/ipab-rad/lite_6/blob/rolling/.github/workflows/motion_planning.yaml)
 # ufactory_lite6_ws
 A default workspace configuration for the ufactory lite6 robot.
 <img src="./assets/workspace.jpg" width="400" />
