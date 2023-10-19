@@ -1,5 +1,6 @@
 # ufactory_lite6_ws
 A default workspace configuration for the ufactory lite6 robot.
+<img src="./assets/workspace.jpg" width="400" />
 
 # Actions Monitor 🔎
 | **Workflow Name**            | **Description**                                        | **Status**                                                                                                                                                                                                                                                                      |
