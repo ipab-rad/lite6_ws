@@ -11,6 +11,7 @@ ENV ROS_UNDERLAY /root/lite6_ws/install
 WORKDIR $ROS_UNDERLAY/..
 COPY src/control ./src/control
 COPY src/motion_planning/lite6_moveit_resources ./src/motion_planning/lite6_moveit_resources
+COPY src/tutorials ./src/tutorials
 
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
     apt-get update && \
