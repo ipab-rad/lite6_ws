@@ -6,6 +6,11 @@ MAINTAINER Peter David Fagan "peterdavidfagan@gmail.com"
 ENV ROS_DISTRO=rolling
 ENV RMW_IMPLEMENTATION rmw_cyclonedds_cpp
 
+# install neovim for development
+RUN apt-get update && \
+    apt-get install -y neovim && \
+    rm -rf /var/lib/apt/lists/*
+
 # set up ROS workspace
 ENV ROS_UNDERLAY /root/lite6_ws/install
 WORKDIR $ROS_UNDERLAY/..
