@@ -3,7 +3,12 @@ project(lite6_moveit_demos)
 
 find_package(ament_cmake REQUIRED)
 
-add_subdirectory(scripts)
-add_subdirectory(notebooks)
+install(PROGRAMS
+  src/motion_planning_python_api_tutorial.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
 
 ament_package()
