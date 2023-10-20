@@ -85,7 +85,7 @@ echo "You've selected: $interface_name"
 # Add and configure the static IP connection
 nmcli connection delete "nuc_static"
 nmcli connection add con-name "nuc_static" ifname "$interface_name" type ethernet
-nmcli connection modify "nuc_static" ipv4.method manual ipv4.address $NUC_IP/24 ipv4.gateway
+nmcli connection modify "nuc_static" ipv4.method manual ipv4.address $NUC_IP/24 
 nmcli connection up "nuc_static"
 
 echo "Static IP configuration complete for interface $interface_name."
