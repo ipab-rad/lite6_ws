@@ -40,7 +40,7 @@ def main():
     logger.info("MoveItPy instance created")
 
     ###########################################################################
-    # Plan 1 - set states with predefined string
+    # Plan 1 - demonstrate moving robot to random joint positions
     ###########################################################################
     lite6.set_start_state_to_current_state()
     logger.info(f"Start State: {lite6.get_start_state().joint_positions}")
@@ -53,14 +53,30 @@ def main():
     robot_state.set_to_random_positions()
 
     # set goal state to the initialized robot state
-    logger.info("Set goal state to the initialized robot state")
+    logger.info("Set goal state to random valid robot state")
     lite6.set_goal_state(robot_state=robot_state)
     
     # plan to goal
     plan_result = lite6.plan()
 
     # execute the plan
-    #time.sleep(3600)
+    if plan_result:
+        robot_trajectory = plan_result.trajectory
+        moveit.execute(robot_trajectory, controllers=[])
+    
+    ###########################################################################
+    # Plan 2 - reset robot to home position
+    ###########################################################################
+    lite6.set_start_state_to_current_state()
+
+    # set goal state to the home position
+    logger.info("Set goal state to the home position")
+    lite6.set_goal_state(configuration_name="home")
+    
+    # plan to goal
+    plan_result = lite6.plan()
+
+    # execute the plan
     if plan_result:
         robot_trajectory = plan_result.trajectory
         moveit.execute(robot_trajectory, controllers=[])

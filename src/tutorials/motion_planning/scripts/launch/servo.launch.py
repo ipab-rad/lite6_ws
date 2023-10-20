@@ -37,8 +37,6 @@ def generate_launch_description():
         .to_dict()
     }
 
-    print(servo_params)
-
     # This filter parameter should be >1. Increase it for greater smoothing but slower motion.
     low_pass_filter_coeff = {"butterworth_filter_coeff": 10.0}
 

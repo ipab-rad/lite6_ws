@@ -61,47 +61,6 @@ def generate_launch_description():
         parameters=[moveit_config.robot_description],
     )
 
-    joint_state_publisher = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        name='joint_state_publisher',
-        output='screen',
-        parameters=[{'source_list': ['xarm/joint_states']}],
-    )
-
-    ros2_controllers_path = os.path.join(
-        get_package_share_directory("moveit_resources_lite6_moveit_config"),
-        "config",
-        "ros2_controllers.yaml",
-    )
-    mod = load_python_launch_file_as_module(os.path.join(get_package_share_directory('xarm_api'), 'launch', 'lib', 'robot_api_lib.py'))
-    generate_robot_api_params = getattr(mod, 'generate_robot_api_params')
-    robot_params = generate_robot_api_params(
-        os.path.join(get_package_share_directory('xarm_api'), 'config', 'xarm_params.yaml'),
-        os.path.join(get_package_share_directory('xarm_api'), 'config', 'xarm_user_params.yaml'),
-        ros_namespace='', node_name='ufactory_driver'
-    )
-    ros2_control_node = Node(
-        package="controller_manager",
-        executable="ros2_control_node",
-        parameters=[
-            moveit_config.robot_description, 
-            ros2_controllers_path,
-            robot_params],
-        output="both",
-    )
-
-    load_controllers = []
-    for controller in [
-        "lite6_traj_controller",
-    ]:
-        load_controllers += [
-            ExecuteProcess(
-                cmd=["ros2 run controller_manager spawner {}".format(controller)],
-                shell=True,
-                output="screen",
-            )
-        ]
 
     # We can start a notebook from a launch file
     return LaunchDescription(
@@ -109,10 +68,7 @@ def generate_launch_description():
             moveit_py_node, 
             static_tf,
             robot_state_publisher,
-            joint_state_publisher,
             rviz_node,
-            ros2_control_node,
         ]
-        + load_controllers
         )
 
