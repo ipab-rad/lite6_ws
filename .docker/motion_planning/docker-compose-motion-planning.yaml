@@ -16,4 +16,4 @@ services:
       - "/dev:/dev"
     privileged: true
     network_mode: "host"
-    command: echo "Placeholder."
+    command: ros2 launch lite6_moveit_demos motion_planning.launch.py
