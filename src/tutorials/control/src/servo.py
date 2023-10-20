@@ -250,4 +250,4 @@ if __name__=="__main__":
     rclpy.spin(node)
 
     node.destroy_node()
-    rclpy.shutdown()o
+    rclpy.shutdown()
