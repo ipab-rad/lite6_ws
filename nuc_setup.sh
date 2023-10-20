@@ -3,7 +3,7 @@
 export ROOT_DIR=$(git rev-parse --show-toplevel)
 export NUC_IP=192.168.1.10
 
-echo "Welcome to the R2D2 setup process."
+echo "Welcome to the lite6_ws setup process."
 
 read -p "Is this your first time setting up the machine? (yes/no): " first_time
 
