@@ -16,4 +16,6 @@ services:
       rtprio: 70
       rttime: -1 # corresponds to 'unlimited'
       memlock: 8428281856
-    command: echo "Placeholder"
+    deploy:
+      restart_policy: 
+        condition: any
