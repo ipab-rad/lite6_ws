@@ -8,6 +8,7 @@ services:
       dockerfile: .docker/control/Dockerfile.control
     devices:
       - "/dev:/dev"
+      - ../../:/root/lite6_ws
     privileged: true
     network_mode: "host"
     cap_add:
