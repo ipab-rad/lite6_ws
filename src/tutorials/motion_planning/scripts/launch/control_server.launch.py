@@ -1,5 +1,4 @@
 import os
-import yaml
 from launch import LaunchDescription
 from launch.launch_description_sources import load_python_launch_file_as_module
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
@@ -7,17 +6,6 @@ from launch_ros.actions import Node, SetParameter
 from launch.actions import ExecuteProcess
 from ament_index_python.packages import get_package_share_directory
 from moveit_configs_utils import MoveItConfigsBuilder
-
-
-def load_yaml(package_name, file_path):
-    package_path = get_package_share_directory(package_name)
-    absolute_file_path = os.path.join(package_path, file_path)
-
-    try:
-        with open(absolute_file_path, "r") as file:
-            return yaml.safe_load(file)
-    except EnvironmentError:  # parent of IOError, OSError *and* WindowsError where available
-        return None
 
 
 def generate_launch_description():
@@ -29,40 +17,9 @@ def generate_launch_description():
             + "/urdf/lite6.urdf")
         .moveit_cpp(
             file_path=get_package_share_directory("lite6_moveit_demos")
-            + "/config/jupyter_notebook_prototyping.yaml"
+            + "/config/moveit_cpp.yaml"
         )
         .to_moveit_configs()
-    )
-
-    rviz_config_file = (
-        get_package_share_directory("lite6_moveit_demos") + "/config/lite6.rviz"
-    )
-    rviz_node = Node(
-        package="rviz2",
-        executable="rviz2",
-        name="rviz2",
-        output="log",
-        arguments=["-d", rviz_config_file],
-        parameters=[
-            moveit_config.robot_description,
-            moveit_config.robot_description_semantic,
-        ],
-    )
-
-    static_tf = Node(
-        package="tf2_ros",
-        executable="static_transform_publisher",
-        name="static_transform_publisher",
-        output="log",
-        arguments=["0.0", "0.0", "0.0", "0.0", "0.0", "0.0", "world", "link_base"],
-    )
-
-    robot_state_publisher = Node(
-        package="robot_state_publisher",
-        executable="robot_state_publisher",
-        name="robot_state_publisher",
-        output="both",
-        parameters=[moveit_config.robot_description],
     )
 
     joint_state_publisher = Node(
@@ -70,7 +27,7 @@ def generate_launch_description():
         executable='joint_state_publisher',
         name='joint_state_publisher',
         output='screen',
-        parameters=[{'source_list': ['ufactory/joint_states']}],
+        parameters=[{'source_list': ['xarm/joint_states']}],
     )
 
     ros2_controllers_path = os.path.join(
@@ -106,51 +63,13 @@ def generate_launch_description():
                 output="screen",
             )
         ]
-    
-    # servo 
-    servo_yaml = load_yaml("lite6_moveit_demos", "config/servo.yaml")
-    servo_params = {"moveit_servo": servo_yaml}
 
-    joy_node = Node(
-        package="joy",
-        executable="joy_node",
-        name="joy_node",
-        output="screen",
-    )
-
-    servo_node = Node(
-        package="moveit_servo",
-        executable="servo_node_main",
-        parameters=[
-            servo_params,
-            moveit_config.robot_description,
-            moveit_config.robot_description_semantic,
-            moveit_config.robot_description_kinematics,
-        ],
-        output="screen",
-    )
-
-    # teleop device
-    ps4_device = Node(
-            name="ps4_teleop_device",
-            package="lite6_moveit_demos",
-            executable="ps4_teleop.py",
-            output="screen",
-            #parameters=[
-            #    ]
-            )
-
-
+    # We can start a notebook from a launch file
     return LaunchDescription(
         [
-            static_tf,
-            robot_state_publisher,
             joint_state_publisher,
-            rviz_node,
             ros2_control_node,
-            joy_node,
-            servo_node,
-            ps4_device,
         ]
         + load_controllers
         )
+
