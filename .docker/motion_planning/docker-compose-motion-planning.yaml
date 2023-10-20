@@ -9,10 +9,14 @@ services:
     environment:
       - DISPLAY=${DISPLAY}
       - XAUTHORITY=${DOCKER_XAUTH}
+      - SSH_AUTH_SOCK=/ssh-agent
     volumes:
       - /tmp/.X11-unix:/tml/.X11-unix:rw
       - ${DOCKER_XAUTH}:${DOCKER_XAUTH}
-      - ../../:/root/lite6_ws
+      - ../../src/control:/root/lite6_ws/src/control
+      - ../../src/motion_planning:/root/lite6_ws/src/motion_planning
+      - ../../src/tutorials:/root/lite6_ws/src/tutorials
+      - ${SSH_AUTH_SOCK}:/ssh-agent \
     devices:
       - "/dev:/dev"
     privileged: true
