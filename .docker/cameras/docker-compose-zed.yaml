@@ -1,0 +1,21 @@
+version: "3"
+
+services: 
+  moveit:
+    image: ghcr.io/ipab-rad/zed:humble
+    build: 
+      context: ../../
+      dockerfile: .docker/cameras/Dockerfile.zed
+    environment:
+      - DISPLAY=${DISPLAY}
+      - XAUTHORITY=${DOCKER_XAUTH}
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - /tmp/.X11-unix:/tml/.X11-unix:rw
+      - ${DOCKER_XAUTH}:${DOCKER_XAUTH}
+    devices:
+      - "/dev:/dev"
+    privileged: true
+    runtime: nvidia
+    network_mode: "host"
+    command: ros2 launch zed_wrapper zed.launch.py
