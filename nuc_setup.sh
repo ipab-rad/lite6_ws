@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export ROOT_DIR=$(git rev-parse --show-toplevel)
-export NUC_IP=192.168.1.10
+export NUC_IP="192.168.1.10"
 
 echo "Welcome to the lite6_ws setup process."
 
