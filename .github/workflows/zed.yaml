@@ -2,7 +2,7 @@ name: zed
 
 on:
   push:
-    branches: ['rolling']
+    branches: ['humble']
     paths:
       - .gitmodules
       - src/*
