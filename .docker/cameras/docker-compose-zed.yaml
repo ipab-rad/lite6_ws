@@ -18,4 +18,4 @@ services:
     privileged: true
     runtime: nvidia
     network_mode: "host"
-    command: ros2 launch zed_wrapper zed.launch.py
+    command: ros2 launch zed_wrapper zed2.launch.py
