@@ -4,6 +4,7 @@ project(lite6_moveit_demos)
 find_package(ament_cmake REQUIRED)
 
 install(PROGRAMS
+  src/blend_plans.py
   src/motion_planning_python_api_tutorial.py
   DESTINATION lib/${PROJECT_NAME}
 )

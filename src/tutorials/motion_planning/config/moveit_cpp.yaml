@@ -12,8 +12,8 @@ planning_pipelines:
 
 plan_request_params:
   planning_attempts: 1
-  planning_pipeline: ompl
-  planner_id: "RRTConnectkConfigDefault"
+  planning_pipeline: pilz_industrial_motion_planner
+  planner_id: "PTP"
   planner_time: 1.0
   max_velocity_scaling_factor: 0.4
   max_acceleration_scaling_factor: 0.4
