@@ -32,7 +32,7 @@ def generate_launch_description():
 
     # Get parameters for the Servo node
     servo_params = {
-        "moveit_servo": ParameterBuilder("lite6_moveit_demos")
+        "moveit_servo": ParameterBuilder("lite6_control_demos")
         .yaml("config/servo.yaml")
         .to_dict()
     }

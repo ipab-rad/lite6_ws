@@ -55,6 +55,7 @@ def generate_launch_description():
     load_controllers = []
     for controller in [
         "lite6_traj_controller",
+        "lite6_position_controller",
     ]:
         load_controllers += [
             ExecuteProcess(
