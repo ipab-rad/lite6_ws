@@ -1,14 +1,14 @@
 version: "3"
 
 services: 
-  moveit:
-    image: ghcr.io/ipab-rad/lite6_ws:control
+  control_server:
+    image: ghcr.io/ipab-rad/lite6_control:latest
     build: 
       context: ../../
       dockerfile: .docker/control/Dockerfile.control
     devices:
       - "/dev:/dev"
-      - ../../:/root/lite6_ws
+        #- ../../:/root/lite6_ws
     privileged: true
     network_mode: "host"
     cap_add:
