@@ -2,7 +2,7 @@ name: lite6_control
 
 on:
   push:
-    branches: ['rolling']
+    branches: ['humble']
     paths:
       - .gitmodules
       - src/control

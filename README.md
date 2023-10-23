@@ -1,4 +1,4 @@
-[![lite6_control](https://github.com/ipab-rad/lite6_ws/actions/workflows/control.yaml/badge.svg)](https://github.com/ipab-rad/lite6_ws/blob/rolling/.github/workflows/control.yaml) [![motion_planning](https://github.com/ipab-rad/lite6_ws/actions/workflows/motion_planning.yaml/badge.svg)](https://github.com/ipab-rad/lite6_ws/blob/rolling/.github/workflows/motion_planning.yaml) [![zed](https://github.com/ipab-rad/lite6_ws/actions/workflows/zed.yaml/badge.svg)](https://github.com/ipab-rad/lite6_ws/blob/rolling/.github/workflows/zed.yaml)
+[![lite6_control](https://github.com/ipab-rad/lite6_ws/actions/workflows/control.yaml/badge.svg)](https://github.com/ipab-rad/lite6_ws/blob/humble/.github/workflows/control.yaml) [![motion_planning](https://github.com/ipab-rad/lite6_ws/actions/workflows/motion_planning.yaml/badge.svg)](https://github.com/ipab-rad/lite6_ws/blob/humble/.github/workflows/motion_planning.yaml) [![zed](https://github.com/ipab-rad/lite6_ws/actions/workflows/zed.yaml/badge.svg)](https://github.com/ipab-rad/lite6_ws/blob/humble/.github/workflows/zed.yaml)
 # UFactory Lite6 Workspace
 A default workspace configuration for the ufactory lite6 robot.
 <img src="./assets/workspace.jpg" width="400" />
@@ -12,7 +12,7 @@ A default workspace configuration for the ufactory lite6 robot.
 This workspaces requires the following software to be installed:
 
 * An installation of Docker ([instructions](https://docs.docker.com/engine/install/ubuntu/))
-* An installation of ROS rolling ([instructions](https://docs.ros.org/en/rolling/Installation.html))
+* An installation of ROS humble ([instructions](https://docs.ros.org/en/humble/Installation.html))
 
 ## Local Setup
 In order to install and build all workspace dependencies on your local machine all you need to run is:
