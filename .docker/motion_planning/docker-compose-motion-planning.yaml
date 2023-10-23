@@ -2,7 +2,7 @@ version: "3"
 
 services: 
   moveit:
-    image: ghcr.io/ipab-rad/lite6_ws:motion_planning
+    image: ghcr.io/ipab-rad/lite6_motion_planning:rolling
     build: 
       context: ../../
       dockerfile: .docker/motion_planning/Dockerfile.motion_planning
@@ -13,12 +13,12 @@ services:
     volumes:
       - /tmp/.X11-unix:/tml/.X11-unix:rw
       - ${DOCKER_XAUTH}:${DOCKER_XAUTH}
+      - ${SSH_AUTH_SOCK}:/ssh-agent 
       - ../../src/control:/root/lite6_ws/src/control
       - ../../src/motion_planning:/root/lite6_ws/src/motion_planning
       - ../../src/tutorials:/root/lite6_ws/src/tutorials
-      - ${SSH_AUTH_SOCK}:/ssh-agent \
     devices:
       - "/dev:/dev"
     privileged: true
     network_mode: "host"
-    command: ros2 launch lite6_moveit_demos motion_planning_python_api_tutorial.launch.py
+    command: ros2 launch lite6_moveit_demos motion_planning.launch.py
