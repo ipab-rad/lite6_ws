@@ -4,7 +4,7 @@ project(lite6_control_demos)
 find_package(ament_cmake REQUIRED)
 
 install(PROGRAMS
-  src/servo.py
+  src/pose_tracking_example.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
