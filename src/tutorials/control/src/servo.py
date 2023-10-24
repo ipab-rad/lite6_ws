@@ -19,12 +19,16 @@ from ament_index_python.packages import get_package_share_directory
 
 import numpy as np
 
+from trajectory import Spiral
+
 class PoseTracker(Node):
     """A node for tracking multiple pose trajectories."""
 
     def __init__(self):
         super().__init__("pose_tracker")
         self.logger = self.get_logger()
+        
+        # initialize target poses list
         self.poses = []
 
         # initialize motion planning client
@@ -55,10 +59,6 @@ class PoseTracker(Node):
         #initialize servo target pose publisher
         self.publisher = self.create_publisher(PoseStamped, "/servo_node/pose_target_cmds", 10)
 
-        # initialize timer
-        #timer_period = 0.1
-        #self.timer = self.create_timer(timer_period, self.publish_target_pose)
-
     def _set_target_pose(self, pose):
         """Sets the target pose."""
         self.target_pose = pose
@@ -70,6 +70,7 @@ class PoseTracker(Node):
         pose = robot_state.get_pose("link_eef")
         return pose
 
+    # TODO: properly implement this
     def _check_pose_threshold(self, pose):
         """Checks if the robot is within the threshold of the target pose."""
         # TODO: check orientation + read thresholds from config
@@ -90,7 +91,6 @@ class PoseTracker(Node):
             self.get_logger().info("Servo command type set to: %s" % command_type)
         else:
             self.get_logger().error("Failed to set servo command type: %s" % command_type)
-
 
     def return_to_start(self):
         """Returns the robot to the start position."""
@@ -162,78 +162,22 @@ class PoseTracker(Node):
             self.publisher.publish(self.target_pose)
 
 
-from abc import ABC, abstractmethod
-from geometry_msgs.msg import Point, Quaternion
-
-class Trajectory(ABC):
-
-    def __init__(self):
-        pass
-
-    @abstractmethod
-    def sample_position(self, t) -> Point:
-        """Samples a position from a trajectory."""
-        pass
-
-    @abstractmethod
-    def sample_orientation(self, t) -> Quaternion:
-        """Samples an orientation from a trajectory."""
-        pass
-
-    def sample_point(self, t):
-        """Samples waypoints from a trajectory."""
-        position = self.sample_position(t)
-        orientation = self.sample_orientation(t)
-        return position, orientation
-
-    def sample_points(self, num_points):
-        """Samples points from a trajectory."""
-        positions = []
-        orientations = []
-        for t in np.linspace(0, 1, num_points):
-            position, orientation = self.sample_point(t*20)
-            positions.append(position)
-            orientations.append(orientation)
-
-        return positions, orientations
-
-class Spiral(Trajectory):
-
-    def __init__(self, radius, height):
-        self.radius = radius
-        self.height = height
-
-    def sample_position(self, t):
-        p = Point()
-        #p.x = self.radius * ((np.cos(2 * np.pi * t) + 1 / 2)) + 0.1
-        #p.y = self.radius * np.sin(2 * np.pi * t)
-        #p.z = (self.height * t) + 0.1
-        p.x = ((np.sin(t) + 1) / 10) + 0.1
-        p.y = ((np.cos(t) + 1) / 10)
-        p.z = (t / 50) + 0.1
-        return p
-
-    def sample_orientation(self, t):
-        q = Quaternion()
-        q.x = 0.924
-        q.y = -0.382
-        q.z = 0.0
-        q.w = 0.0
-        return q
-
-
 if __name__=="__main__":
-    rclpy.init()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-    node = PoseTracker()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-    # return to start position                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-    node.return_to_start()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-    # set servo command type to pose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-    node.set_servo_command_type(2)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-    spiral = Spiral(radius=0.1, height=0.1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-    node.generate_waypoints(spiral)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-    node.track_pose_targets()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-    node.destroy_node()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-    rclpy.shutdown()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    rclpy.init()
+    node = PoseTracker()
+    
+    # return to start position
+    node.return_to_start()
+
+    # set servo command type to pose                                                                                     
+    node.set_servo_command_type(2)
+    spiral = Spiral(radius=0.1, height=0.1)
+    
+    # track pose targets
+    node.generate_waypoints(spiral)
+    node.track_pose_targets()
+
+    # shutdown
+    node.destroy_node()
+    rclpy.shutdown()                                                                                                    
+
