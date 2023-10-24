@@ -5,10 +5,6 @@
 	path = src/motion_planning/moveit2
 	url = git@github.com:peterdavidfagan/moveit2.git
 	branch = main
-[submodule "src/audio/audio_common"]
-	path = src/audio/audio_common
-	url = git@github.com:ros-drivers/audio_common.git
-	branch = ros2
 [submodule "src/control/gripper_action_client"]
 	path = src/control/gripper_action_client
 	url = git@github.com:peterdavidfagan/gripper_action_client.git
@@ -20,3 +16,6 @@
 	path = src/cameras/zed-ros2-wrapper
 	url = git@github.com:stereolabs/zed-ros2-wrapper.git
 	branch = master
+[submodule "src/audio/ros2_whisper"]
+	path = src/audio/ros2_whisper
+	url = git@github.com:peterdavidfagan/ros2_whisper.git
