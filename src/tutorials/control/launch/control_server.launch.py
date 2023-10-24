@@ -1,7 +1,10 @@
 import os
 from launch import LaunchDescription
+from launch.actions import OpaqueFunction, IncludeLaunchDescription, DeclareLaunchArgument
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.launch_description_sources import load_python_launch_file_as_module
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node, SetParameter
 from launch.actions import ExecuteProcess
 from ament_index_python.packages import get_package_share_directory
@@ -13,7 +16,7 @@ def generate_launch_description():
         MoveItConfigsBuilder(robot_name="lite6", package_name="moveit_resources_lite6_moveit_config")
         .trajectory_execution(file_path="config/moveit_controllers.yaml")
         .robot_description_semantic("config/lite6.srdf")
-        .robot_description(file_path=get_package_share_directory("moveit_resources_lite6_description") 
+        .robot_description(file_path=get_package_share_directory("moveit_resources_lite6_description")
             + "/urdf/lite6.urdf")
         .moveit_cpp(
             file_path=get_package_share_directory("lite6_moveit_demos")
@@ -35,20 +38,28 @@ def generate_launch_description():
         "config",
         "ros2_controllers.yaml",
     )
-    mod = load_python_launch_file_as_module(os.path.join(get_package_share_directory('xarm_api'), 'launch', 'lib', 'robot_api_lib.py'))
-    generate_robot_api_params = getattr(mod, 'generate_robot_api_params')
-    robot_params = generate_robot_api_params(
-        os.path.join(get_package_share_directory('xarm_api'), 'config', 'xarm_params.yaml'),
-        os.path.join(get_package_share_directory('xarm_api'), 'config', 'xarm_user_params.yaml'),
-        ros_namespace='', node_name='ufactory_driver'
+    
+    # robot driver launch
+    # xarm_api/launch/_robot_driver.launch.py
+    robot_driver = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(PathJoinSubstitution([FindPackageShare('xarm_api'), 'launch', '_robot_driver.launch.py'])),
+        launch_arguments={
+            'robot_ip': '192.168.1.156',
+            'report_type': 'dev',
+            'dof': '6',
+            'hw_ns': 'xarm',
+            'add_gripper': 'false',
+            'prefix': '',
+            'robot_type': 'lite',
+        }.items(),
     )
+
     ros2_control_node = Node(
         package="controller_manager",
         executable="ros2_control_node",
         parameters=[
-            moveit_config.robot_description, 
-            ros2_controllers_path,
-            robot_params],
+            moveit_config.robot_description,
+            ros2_controllers_path],
         output="both",
     )
 
@@ -68,8 +79,10 @@ def generate_launch_description():
     # We can start a notebook from a launch file
     return LaunchDescription(
         [
-            joint_state_publisher,
+            robot_driver,
             ros2_control_node,
+            joint_state_publisher,
         ]
         + load_controllers
         )
+
