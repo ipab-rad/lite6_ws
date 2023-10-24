@@ -1,7 +1,7 @@
 version: "3"
 
 services: 
-  moveit:
+  servo:
     image: ghcr.io/ipab-rad/lite6_control:rolling
     build: 
       context: ../../
