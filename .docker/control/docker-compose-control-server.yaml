@@ -17,7 +17,7 @@ services:
       rtprio: 70
       rttime: -1 # corresponds to 'unlimited'
       memlock: 8428281856
-    command: ros2 launch lite6_moveit_demos control_server.launch.py # replace with command for specific tutorial
+    command: ros2 launch lite6_control_demos control_server.launch.py # replace with command for specific tutorial
     deploy:
       restart_policy: 
         condition: any
