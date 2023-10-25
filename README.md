@@ -1,6 +1,7 @@
 [![lite6_control](https://github.com/ipab-rad/lite6_ws/actions/workflows/control.yaml/badge.svg)](https://github.com/ipab-rad/lite6_ws/blob/rolling/.github/workflows/control.yaml) [![motion_planning](https://github.com/ipab-rad/lite6_ws/actions/workflows/motion_planning.yaml/badge.svg)](https://github.com/ipab-rad/lite6_ws/blob/rolling/.github/workflows/motion_planning.yaml) [![zed](https://github.com/ipab-rad/lite6_ws/actions/workflows/zed.yaml/badge.svg)](https://github.com/ipab-rad/lite6_ws/blob/rolling/.github/workflows/zed.yaml)
 # UFactory Lite6 Workspace
-A default workspace configuration for the ufactory lite6 robot.
+This workspace serves as a template for setting up a ROS 2 workspace for performing robot learning research. 
+
 <img src="./assets/workspace.jpg" width="400" />
 
 # Hardware Setup
@@ -8,13 +9,13 @@ A default workspace configuration for the ufactory lite6 robot.
 
 # Software Setup
 
-## Software Prerequisites
+## System Software Prerequisites
 This workspaces requires the following software to be installed:
 
 * An installation of Docker ([instructions](https://docs.docker.com/engine/install/ubuntu/))
 * An installation of ROS rolling ([instructions](https://docs.ros.org/en/rolling/Installation.html))
 
-## Local Setup
+## Build ROS workspace on host machine
 In order to install and build all workspace dependencies on your local machine all you need to run is:
 
 ```bash
