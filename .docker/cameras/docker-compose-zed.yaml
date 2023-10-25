@@ -1,7 +1,7 @@
 version: "3"
 
 services: 
-  moveit:
+  zed2:
     image: ghcr.io/ipab-rad/zed2:rolling
     build: 
       context: ../../
