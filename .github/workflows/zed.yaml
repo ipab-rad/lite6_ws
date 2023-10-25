@@ -2,7 +2,7 @@ name: zed2
 
 on:
   push:
-    branches: ['humble']
+    branches: ['rolling']
     paths:
       - .gitmodules
       - src/cameras/**
@@ -49,4 +49,4 @@ jobs:
           file: .docker/cameras/Dockerfile.zed
           push: true
           no-cache: true
-          tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:humble
+          tags: ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:rolling
