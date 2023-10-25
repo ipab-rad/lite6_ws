@@ -46,6 +46,9 @@ Please see [motion_planning_tutorial](placeholder.com) for further instructions.
 
 
 ### Control Tutorial
+
+<img src="./assets/control_debug.png" width="400" />
+
 ```bash
 ros2 launch 
 ```
