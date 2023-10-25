@@ -43,7 +43,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == robot
+          - node.hostname == thor
 
 
   zed2:
@@ -62,7 +62,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == robot
+          - node.hostname == thor
 
   foxglove:
     image: ghcr.io/foxglove/studio:latest
