@@ -1,4 +1,4 @@
-name: zed
+name: zed2
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
 env:
   REGISTRY: ghcr.io
   ORG_NAME: ipab-rad
-  IMAGE_NAME: zed
+  IMAGE_NAME: zed2
 
 jobs:
   build-and-push-image:
