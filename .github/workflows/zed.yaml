@@ -5,7 +5,7 @@ on:
     branches: ['rolling']
     paths:
       - .gitmodules
-      - src/*
+      - src/cameras/**
       - .docker/cameras/Dockerfile.zed
       - .github/workflows/zed.yaml
   workflow_dispatch:
