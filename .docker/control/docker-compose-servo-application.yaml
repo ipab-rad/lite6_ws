@@ -48,10 +48,11 @@ services:
 
   foxglove:
     image: ghcr.io/foxglove/studio:latest
-    ports:
-      - "8080:8080"
+    volumes:
+      - ../../.foxglove/xarm_joint_positions.json:/foxglove/default-layout.json
+    network_mode: "host"
     deploy:
       placement:
         constraints:
           - node.hostname == thor
-
+  
