@@ -5,7 +5,7 @@ on:
     branches: ['rolling']
     paths:
       - .gitmodules
-      - src/*
+      - src/**
       - .docker/motion_planning/Dockerfile.motion_planning
       - .github/workflows/motion_planning.yaml
   workflow_dispatch:
