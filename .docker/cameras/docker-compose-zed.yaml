@@ -2,7 +2,7 @@ version: "3"
 
 services: 
   moveit:
-    image: ghcr.io/ipab-rad/zed:rolling
+    image: ghcr.io/ipab-rad/zed2:rolling
     build: 
       context: ../../
       dockerfile: .docker/cameras/Dockerfile.zed
