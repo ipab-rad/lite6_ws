@@ -45,3 +45,13 @@ services:
       placement:
         constraints:
           - node.hostname == robot
+
+  foxglove:
+    image: ghcr.io/foxglove/studio:latest
+    ports:
+      - "8080:8080"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == thor
+
