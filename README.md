@@ -22,6 +22,8 @@ In order to install and build all workspace dependencies on your local machine a
 ./local_setup.sh
 ```
 
+This is only necessary if you wish to run application code directly on the host machine, most applications within this repository are dockerised and hence don't require you to build the ROS 2 workspace on the host machine.
+
 ## Docker GUI Prerequisites
 If you wish to run a container that contains GUI applications (e.g. rviz) you need to first manage X-server authentication. The most basic way to do so is through enabling access to all local applications by running: 
 
