@@ -26,3 +26,10 @@ setup(
      ],
    },
 )
+
+from generate_parameter_library_py.setup_helper import generate_parameter_module
+
+generate_parameter_module(
+  "lite6_policy_deployment_demos_parameters", # python module name for parameter library
+  "config/policy.yaml", # path to input yaml file
+)
