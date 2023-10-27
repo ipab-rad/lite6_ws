@@ -109,7 +109,7 @@ In future this bridge will be moved to a docker container and launched as a serv
 Start the application code (control server, servo node, foxglove visualization):
 ```bash
 cd .docker/control
-docker compose -f docker-compose-servo-application.yaml up
+docker stack deploy -c docker-compose-servo-application.yaml  control_stack
 ```
 
 In order to view the default dashboard configuration open [http://localhost:8080](http://localhost:8080/).
