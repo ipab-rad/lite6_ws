@@ -22,15 +22,15 @@ def generate_launch_description():
         .to_moveit_configs()
     )
 
-    #rviz_config_file = (
-    #    get_package_share_directory("moveit2_tutorials") + "/config/jupyter_notebook_prototyping.rviz"
-    #)
+    rviz_config_file = (
+        get_package_share_directory("lite6_motion_planning_demos") + "/config/planning_scene.rviz"
+    )
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",
         name="rviz2",
         output="log",
-    #    arguments=["-d", rviz_config_file],
+        arguments=["-d", rviz_config_file],
         parameters=[
             moveit_config.robot_description,
             moveit_config.robot_description_semantic,
