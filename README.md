@@ -41,13 +41,6 @@ xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $DOCKER_XAUTH nmerge -
 
 ## Running Tutorials
 
-### Motion Planning Tutorial
-```bash
-ros2 launch 
-```
-Please see [motion_planning_tutorial](placeholder.com) for further instructions.
-
-
 ### Control Tutorial
 
 Start the application code (control server, servo node, foxglove visualization):
@@ -71,6 +64,12 @@ python ./src/tutorials/control/src/servo.py
 ```
 
 Please see [control_tutorial](placeholder.com) for further instructions.
+
+### Motion Planning Tutorial
+```bash
+ros2 launch 
+```
+Please see [motion_planning_tutorial](placeholder.com) for further instructions.
 
 ### Policy Deployment Tutorial
 ```bash
