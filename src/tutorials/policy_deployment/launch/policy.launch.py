@@ -10,7 +10,6 @@ def generate_launch_description():
             .yaml("config/policy.yaml")
             .to_dict()
             }
-    print(policy_params)
 
     policy_node = Node(
             package="lite6_policy_deployment_demos",
