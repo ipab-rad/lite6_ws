@@ -3,11 +3,19 @@
 # IMPORTANT: This repository is a work in progress, once it is in a stable state this message will be removed.
 
 # UFactory Lite6 Workspace
-This workspace serves as a template for setting up a ROS 2 workspace for performing robot learning research. 
+This workspace serves as a template for setting up a ROS 2 workspace for performing robot learning research. Most of the application code within this repository is intended to be run using Docker, with this being said, it is possible to build the ROS workspace on the host of a machine running Ubuntu 22.04. Tutorials and code have not been tested on Windows or MacOS. 
 
 <img src="./assets/workspace.jpg" width="400" />
 
 # Hardware Setup
+
+## Components
+* UFactory Lite6
+* Intel NUC (Intel i5 as minimum CPU spec)
+* Client machine (Nvidia GPU that supports CUDA 12+)
+* Ethernet switch
+* Zed camera
+
 <img src="./assets/ufactory.png" width="400" />
 
 # Software Setup
@@ -16,18 +24,62 @@ This workspace serves as a template for setting up a ROS 2 workspace for perform
 This workspaces requires the following software to be installed:
 
 * An installation of Docker ([instructions](https://docs.docker.com/engine/install/ubuntu/))
+* An installation of Nvidia Container Toolkit (if you intend to use cameras + policy deployment) ([instructions](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html))
 * An installation of ROS rolling ([instructions](https://docs.ros.org/en/rolling/Installation.html))
 
-## Build ROS workspace on host machine
-In order to install and build all workspace dependencies on your local machine all you need to run is:
+# NUC Machine Setup
+* Install Docker
+* Perform Realtime Patch of Kernel
+* CPU frequency scaling
+* Set static IP
+* Turns on SSH service
+* Disables display manager
 
+Run the following script to accomplish the above steps and setup your NUC:
+
+```bash
+./nuc_setup.sh
+```
+
+
+
+# Client Machine Setup
+** Incomplete
+
+* Set static IP
+* Set XAUTH variables to enable X11 forwarding
+
+Run the following script to accomplish the above steps and setup your NUC:
+```bash
+client_machine_setup.sh
+```
+
+## Running ROS Applications on Host
+In order to install and build all workspace dependencies on your local machine all you need to run is:
 ```bash
 ./local_setup.sh
 ```
 
 This is only necessary if you wish to run application code directly on the host machine, most applications within this repository are dockerised and hence don't require you to build the ROS 2 workspace on the host machine.
 
-## Docker GUI Prerequisites
+## Running ROS Applications with Docker
+The following guides are recommended as background reading for this section:
+
+* [Docker Guide](https://docs.docker.com/get-started/) 
+* [Docker Compose](https://docs.docker.com/compose/)
+* [Docker Swarm](https://docs.docker.com/engine/swarm/)
+
+### Docker Application Deployment
+The `.docker` folder of this repository contains multiple subfolders which docker compose files that can be used to deploy containers across machines within the LAN. 
+
+### Docker Swarm Configuration
+**Incomplete 
+
+1. Initialize swarm on client machine
+2. Make client machine a swarm manager
+3. Add NUC and other devices as Nodes within the swarm
+
+### Docker GUI Prerequisites
 If you wish to run a container that contains GUI applications (e.g. rviz) you need to first manage X-server authentication. The most basic way to do so is through enabling access to all local applications by running: 
 
 ```
@@ -42,7 +94,7 @@ touch $DOCKER_XAUTH
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $DOCKER_XAUTH nmerge -
 ```
 
-## Running Tutorials
+## Running Tutorials Examples
 
 ### Control Tutorial
 
@@ -52,13 +104,13 @@ cd .docker/control
 docker compose -f docker-compose-servo-application.yaml up
 ```
 
-Note: the current set of configs leverage node constraints to deploy containers on specific devices in a Docker swarm, more details about this config will be provided as the repository moves from development to stable state.
-
-Note: in its current state, for visualization code to work one needs to run the foxglove bridge with 
+Note: in its current state, for visualization code to work one needs to run the foxglove bridge on the host machine with 
 
 ```
 ros2 run foxglove_bridge foxglove_bridge
 ```
+
+In future this bridge will be moved to a docker container and launched as a service with the application.
 
 Run example trajectory code: 
 ```bash
