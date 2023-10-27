@@ -25,23 +25,36 @@ from ament_index_python.packages import get_package_share_directory
 from moveit_configs_utils import MoveItConfigsBuilder
 import yaml
 
+from ament_index_python.packages import get_package_share_directory
+from moveit_configs_utils import MoveItConfigsBuilder
+
 
 def main():
-
-    ###################################################################
-    # MoveItPy Setup
-    ###################################################################
     rclpy.init()
     logger = rclpy.logging.get_logger("moveit_py.pose_goal")
+    
+    # read moveit config files
+    moveit_config = (
+        MoveItConfigsBuilder(robot_name="lite6", package_name="moveit_resources_lite6_moveit_config")
+        .trajectory_execution(file_path="config/moveit_controllers.yaml")
+        .robot_description_semantic("config/lite6.srdf")
+        .robot_description(file_path=get_package_share_directory("moveit_resources_lite6_description") 
+            + "/urdf/lite6.urdf")
+        .moveit_cpp(
+            file_path=get_package_share_directory("lite6_motion_planning_demos")
+            + "/config/moveit_cpp.yaml"
+        )
+        .to_moveit_configs()
+    ).to_dict()
 
     # instantiate MoveItPy instance and get planning component
-    moveit = MoveItPy(node_name="moveit_py")
+    moveit = MoveItPy(node_name="moveit_py", config_dict=moveit_config)
     lite6 = moveit.get_planning_component("lite6")
     logger.info("MoveItPy instance created")
 
-    ###########################################################################
+
     # Plan 1 - demonstrate moving robot to random joint positions
-    ###########################################################################
+    
     lite6.set_start_state_to_current_state()
     logger.info(f"Start State: {lite6.get_start_state().joint_positions}")
 
@@ -62,11 +75,11 @@ def main():
     # execute the plan
     if plan_result:
         robot_trajectory = plan_result.trajectory
+        input("Press Enter to execute the trajectory")
         moveit.execute(robot_trajectory, controllers=[])
     
-    ###########################################################################
     # Plan 2 - reset robot to home position
-    ###########################################################################
+    
     lite6.set_start_state_to_current_state()
 
     # set goal state to the home position
@@ -79,6 +92,7 @@ def main():
     # execute the plan
     if plan_result:
         robot_trajectory = plan_result.trajectory
+        input("Press Enter to execute the trajectory")
         moveit.execute(robot_trajectory, controllers=[])
 
 if __name__ == "__main__":
