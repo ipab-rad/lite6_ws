@@ -14,3 +14,7 @@ services:
     runtime: nvidia
     network_mode: "host"
     command: ros2 launch zed_wrapper zed2i.launch.py
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == thor
