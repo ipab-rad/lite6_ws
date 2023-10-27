@@ -19,7 +19,7 @@ def generate_launch_description():
         .robot_description(file_path=get_package_share_directory("moveit_resources_lite6_description")
             + "/urdf/lite6.urdf")
         .moveit_cpp(
-            file_path=get_package_share_directory("lite6_moveit_demos")
+            file_path=get_package_share_directory("lite6_motion_planning_demos")
             + "/config/moveit_cpp.yaml"
         )
         .to_moveit_configs()
