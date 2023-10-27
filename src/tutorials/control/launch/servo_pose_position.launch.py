@@ -40,21 +40,6 @@ def generate_launch_description():
     # This filter parameter should be >1. Increase it for greater smoothing but slower motion.
     low_pass_filter_coeff = {"butterworth_filter_coeff": 1.5}
 
-    #rviz_config_file = (
-    #    get_package_share_directory("moveit2_tutorials") + "/config/jupyter_notebook_prototyping.rviz"
-    #)
-    rviz_node = Node(
-        package="rviz2",
-        executable="rviz2",
-        name="rviz2",
-        output="log",
-    #    arguments=["-d", rviz_config_file],
-        parameters=[
-            moveit_config.robot_description,
-            moveit_config.robot_description_semantic,
-        ],
-    )
-    
     # Launch as much as possible in components
     container = launch_ros.actions.ComposableNodeContainer(
         name="moveit_servo_demo_container",
@@ -111,7 +96,6 @@ def generate_launch_description():
 
     return launch.LaunchDescription(
         [
-            rviz_node,
             servo_node,
             container,
         ]
