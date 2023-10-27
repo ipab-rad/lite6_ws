@@ -5,7 +5,7 @@ find_package(ament_cmake REQUIRED)
 
 install(PROGRAMS
   src/blend_plans.py
-  src/motion_planning_python_api_tutorial.py
+  src/motion_planning.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
