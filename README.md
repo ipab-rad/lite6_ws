@@ -98,12 +98,6 @@ xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $DOCKER_XAUTH nmerge -
 
 ### Control Tutorial
 
-Start the application code (control server, servo node, foxglove visualization):
-```bash
-cd .docker/control
-docker compose -f docker-compose-servo-application.yaml up
-```
-
 Note: in its current state, for visualization code to work one needs to run the foxglove bridge on the host machine with 
 
 ```
@@ -111,6 +105,16 @@ ros2 run foxglove_bridge foxglove_bridge
 ```
 
 In future this bridge will be moved to a docker container and launched as a service with the application.
+
+Start the application code (control server, servo node, foxglove visualization):
+```bash
+cd .docker/control
+docker compose -f docker-compose-servo-application.yaml up
+```
+
+In order to view the default dashboard configuration open [http://localhost:8080](http://localhost:8080/).
+
+<img src="./assets/control_debug.png" width="400" />
 
 Run example trajectory code: 
 ```bash
