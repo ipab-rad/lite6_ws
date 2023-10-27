@@ -58,16 +58,16 @@ docker compose -f docker-compose-servo-application.yaml up
 
 Note: the current set of configs leverage node constraints to deploy containers on specific devices in a Docker swarm, more details about this config will be provided as the repository moves from development to stable state.
 
-Run example trajectory code: 
-```bash
-source /opt/ros/rolling/setup.bash
-python ./src/tutorials/control/src/servo.py 
-```
-
 Note: in its current state, for visualization code to work one needs to run the foxglove bridge with 
 
 ```
 ros2 run foxglove_bridge foxglove_bridge
+```
+
+Run example trajectory code: 
+```bash
+source /opt/ros/rolling/setup.bash
+python ./src/tutorials/control/src/servo.py 
 ```
 
 Please see [control_tutorial](placeholder.com) for further instructions.
