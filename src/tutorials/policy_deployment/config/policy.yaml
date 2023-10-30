@@ -34,7 +34,7 @@ policy:
         description: "",
       }
   
-  controller1:
+  command:
     type: {
         type: string,
         default_value: "geometry_msgs/PoseStamped",

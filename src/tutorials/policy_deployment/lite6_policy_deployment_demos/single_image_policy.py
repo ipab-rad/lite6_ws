@@ -95,7 +95,7 @@ class SingleImagePolicy(Policy):
             target.pose.orientation.x = 0.924
             target.pose.orientation.y = -0.382
             target.pose.orientation.z = 0.0
-            self.controller_pub.publish(target)
+            self.command_pub.publish(target)
         else:
             self._logger.debug("Policy is not active")
 
