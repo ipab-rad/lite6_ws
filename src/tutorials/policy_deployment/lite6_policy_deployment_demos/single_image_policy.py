@@ -16,6 +16,7 @@ import jax
 import flax
 import flax.linen as nn
 
+
 class CNN(nn.Module):
   """A simple CNN model."""
 
