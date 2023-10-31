@@ -98,6 +98,6 @@ systemctl enable ssh
 systemctl disable display-manager.service
 
 # run control server container (Note: this will automatically start on boot)
-DOCKER_COMPOSE_FILE="$(git rev-parse --show-toplevel)/.docker/control/docker-compose-control.yaml"
+DOCKER_COMPOSE_FILE="$(git rev-parse --show-toplevel)/.docker/control/docker-compose-control-server.yaml"
 docker compose -f $DOCKER_COMPOSE_FILE up -d
 
