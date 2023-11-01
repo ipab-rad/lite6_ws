@@ -57,7 +57,7 @@ client_machine_setup.sh
 ## Running ROS Applications on Host
 In order to install and build all workspace dependencies on your local machine all you need to run is:
 ```bash
-./local_setup.sh
+./ros_workspace_setup.sh
 ```
 
 This is only necessary if you wish to run application code directly on the host machine, most applications within this repository are dockerised and hence don't require you to build the ROS 2 workspace on the host machine.
