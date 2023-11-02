@@ -21,4 +21,4 @@ services:
       - "/dev:/dev"
     privileged: true
     network_mode: "host"
-    command: ros2 launch lite6_moveit_demos motion_planning.launch.py
+    command: ros2 launch lite6_moveit_demos motion_planning_prerequisites.launch.py
