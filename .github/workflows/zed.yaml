@@ -1,19 +1,19 @@
-name: zed
+name: zed2
 
 on:
   push:
     branches: ['humble']
     paths:
       - .gitmodules
-      - src/*
-      - .docker/cameras/Dockerfile.motion_planning
-      - .github/workflows/cameras.yaml
+      - src/cameras/**
+      - .docker/cameras/Dockerfile.zed
+      - .github/workflows/zed.yaml
   workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
   ORG_NAME: ipab-rad
-  IMAGE_NAME: zed
+  IMAGE_NAME: zed2
 
 jobs:
   build-and-push-image:
