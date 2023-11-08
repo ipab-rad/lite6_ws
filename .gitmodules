@@ -16,3 +16,6 @@
 	path = src/cameras/zed-ros2-wrapper
 	url = git@github.com:peterdavidfagan/zed-ros2-wrapper.git
 	branch = rolling
+[submodule "src/cameras/image_pipeline"]
+	path = src/cameras/image_pipeline
+	url = git@github.com:ros-perception/image_pipeline.git
