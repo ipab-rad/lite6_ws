@@ -96,7 +96,7 @@ xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $DOCKER_XAUTH nmerge -
 
 ## Running Tutorials Examples
 
-### CAmera Calibration Tutorial
+### Camera Calibration Tutorial
 
 ### Control Tutorial
 
