@@ -96,6 +96,8 @@ xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $DOCKER_XAUTH nmerge -
 
 ## Running Tutorials Examples
 
+### CAmera Calibration Tutorial
+
 ### Control Tutorial
 
 Note: in its current state, for visualization code to work one needs to run the foxglove bridge on the host machine with 
