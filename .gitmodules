@@ -19,3 +19,4 @@
 [submodule "src/cameras/image_pipeline"]
 	path = src/cameras/image_pipeline
 	url = git@github.com:ros-perception/image_pipeline.git
+	branch = rolling
