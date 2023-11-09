@@ -11,7 +11,6 @@ services:
     devices:
       - "/dev:/dev"
     privileged: true
-    network_mode: "host"
     cap_add:
       - SYS_NICE
     ulimits:
@@ -23,6 +22,7 @@ services:
       placement:
         constraints:
           - node.hostname == robot
+
   servo:
     image: ghcr.io/ipab-rad/lite6_control:rolling
     networks:
@@ -33,7 +33,6 @@ services:
     devices:
       - "/dev:/dev"
     privileged: true
-    network_mode: "host"
     cap_add:
       - SYS_NICE
     ulimits:
@@ -57,7 +56,6 @@ services:
       - ros_application
     volumes:
       - ../../.foxglove/xarm_joint_positions.json:/foxglove/default-layout.json
-    network_mode: "host"
     deploy:
       placement:
         constraints:
@@ -72,7 +70,20 @@ services:
         constraints:
           - node.hostname == thor
 
+  servo_client_container:
+    image: ghcr.io/ipab-rad/lite6_control:rolling
+    networks:
+      - ros_application
+    build: 
+      context: ../../
+      dockerfile: .docker/control/Dockerfile.control
+    command: sleep 3600
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == thor
+
 networks:
    ros_application:
-    external:
-      name: "host"
+     name: "host"
+     external: true
