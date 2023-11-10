@@ -7,8 +7,6 @@ Source: https://github.com/AlexanderKhazatsky/R2D2/blob/main/r2d2/calibration/ca
 
 Helpful resources:
     - https://forum.opencv.org/t/eye-to-hand-calibration/5690
-
-Stay classy fellow rostronauts!
 """
 
 import time
