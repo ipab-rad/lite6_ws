@@ -2,12 +2,35 @@
 
 # IMPORTANT: This repository is a work in progress, once it is in a stable state this message will be removed.
 
-# UFactory Lite6 Workspace
-This workspace serves as a template for setting up a ROS 2 workspace for performing robot learning research. Most of the application code within this repository is intended to be run using Docker, with this being said, it is possible to build the ROS workspace on the host of a machine running Ubuntu 22.04. Tutorials and code have not been tested on Windows or MacOS. 
+# ROS 2 Robot Learning Workspace 🚀 
+This repository serves as a template for setting up a ROS 2 workspace for performing robot learning research. In order to run the code in this repository with a given robot, you simply need to change description packages that integrate the robot with `MoveIt` and `ROS 2 Control`, a guide for doing this will be added in future. 
+
+Most of the application code within this repository is intended to be run using Docker, with this being said, it is possible to build the ROS workspace on the host of a machine running Ubuntu 22.04. 
+
+Tutorials for the following applications are included:
+
+* Camera calibration (intrinsic + extrinsic parameters)
+* Control (interfacing with ROS 2 Controllers)
+* Motion Planning (using MoveIt 2 for motion planning)
+* Policy Deployment (deploying neural network policies on the robot)
+
+The following tutorials are considered be added in future:
+
+* Teleoperation
+* Grasp Pose Estimation
+* Data Collection + Converting ROS 2 MCAP data to RLDS 
+
+If you use ROS 2 and are interested in contributing to this codebase please reach out at peterdavidfagan@gmail.com. If you use these tools in your research please star this repository. 
 
 <img src="./assets/workspace.jpg" width="400" />
 
-# Hardware Setup
+## Supported Robots 🤖
+A list of robots operated using this codebase (with minor alterations). I am open to starting a template repo with branches for each robot that is supported.
+
+* UFactory Lite6
+* Franka Emika Panda
+
+# Hardware Setup 🔧
 
 ## Components
 * UFactory Lite6
